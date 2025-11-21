@@ -14,23 +14,18 @@ void loop() {
   Serial.print("Soil Moisture (%): ");
   Serial.println(percentage);
 
-  if (percentage < 15) {
-    Serial.println("Extremely Dry (<15%) - Pump ON");
+  if (percentage < 70) {
+    Serial.println("Dry (<70%) - Pump ON");
     digitalWrite(13, HIGH);
     digitalWrite(12, LOW);
   }
-  else if (percentage >= 15 && percentage < 30) {
-    Serial.println("Dry (15–30%) - Pump ON");
-    digitalWrite(13, HIGH);
-    digitalWrite(12, LOW);
-  }
-  else if (percentage >= 30 && percentage <= 50) {
-    Serial.println("Optimal (30–50%) - Pump OFF");
+  else if (percentage >= 70 && percentage <= 90) {
+    Serial.println("Optimal (70–90%) - Pump OFF");
     digitalWrite(13, LOW);
     digitalWrite(12, LOW);
   }
-  else if (percentage > 50) {
-    Serial.println("Too Wet (>50%) - Pump OFF");
+  else if (percentage > 90) {
+    Serial.println("Too Wet (>90%) - Pump OFF");
     digitalWrite(13, LOW);
     digitalWrite(12, LOW);
   }
